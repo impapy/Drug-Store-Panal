@@ -1,11 +1,17 @@
 export const getTokens = () => {
-  const accessToken = typeof window && window.localStorage.getItem("accessToken")
-  const refreshToken = typeof window && window.localStorage.getItem("refreshToken")
+  if (typeof window !== "undefined") {
+    // Check if window is available
+    const accessToken = window.localStorage.getItem("accessToken")
+    const refreshToken = window.localStorage.getItem("refreshToken")
 
-  // if (!accessToken || !refreshToken) return null
+    return {
+      accessToken,
+      refreshToken,
+    }
+  }
 
   return {
-    accessToken,
-    refreshToken,
+    accessToken: null,
+    refreshToken: null,
   }
 }

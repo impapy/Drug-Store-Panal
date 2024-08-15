@@ -1,0 +1,5 @@
+mutation DrugAdd($input: DrugAddInput!) {
+  drugAdd(input: $input) {
+    _id
+  }
+}

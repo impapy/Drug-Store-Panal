@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles"
-import { centerAll } from "styles/shared"
+import { centerAll } from "../../../styles/shared"
 
 export const ModalContentBox = styled("div")(
   ({ theme }) => `

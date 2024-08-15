@@ -38,6 +38,8 @@ import { ReactComponent as ArrowDownIcon } from "./arrow-down.svg"
 import { ReactComponent as ArrowUpIcon } from "./arrow-up.svg"
 import { ReactComponent as UploadIcon } from "./upload.svg"
 import { ReactComponent as PrinterIcon } from "./printer.svg"
+import { ReactComponent as DrugLightIcon } from "./drug-Light-Icon.svg"
+import { ReactComponent as DrugDarkIcon } from "./drug-dark-icon.svg"
 
 export {
   DashboardLightIcon,
@@ -80,4 +82,6 @@ export {
   ArrowUpIcon,
   UploadIcon,
   PrinterIcon,
+  DrugLightIcon,
+  DrugDarkIcon,
 }

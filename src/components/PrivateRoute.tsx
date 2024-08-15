@@ -1,4 +1,4 @@
-import { useAuthContext } from "contexts/AuthContext"
+import { useAuthContext } from "../contexts/AuthContext"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
 
@@ -10,7 +10,7 @@ const PrivateRoute = ({ children }: { children: JSX.Element }) => {
 
   useEffect(() => {
     isLoggedIn === false && router.push("/signin")
-  }, [isLoggedIn])
+  }, [isLoggedIn, router])
 
   return isLoggedIn ? children : null
 }

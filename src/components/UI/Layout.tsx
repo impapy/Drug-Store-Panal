@@ -2,12 +2,12 @@ import React, { useEffect } from "react"
 import Head from "next/head"
 import IconButton from "@mui/material/IconButton"
 import MenuIcon from "@mui/icons-material/Menu"
-import { Box, Container, Divider, Drawer, Grid, styled, Toolbar, Typography } from "@mui/material"
+import { Box, Container, Divider, Drawer, Grid, NoSsr, styled, Toolbar, Typography } from "@mui/material"
 
 import Admin from "./Admin"
-import ButtonBack from "components/UI/buttons/ButtonBack"
+import ButtonBack from "../UI/buttons/ButtonBack"
 import Sidebar from "./Sidebar"
-import { useWindowSize } from "hooks/useWindowSize"
+import { useWindowSize } from "../../hooks/useWindowSize"
 
 interface LayoutProps {
   children: React.ReactNode
@@ -35,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
   }, [width])
 
   return (
-    <div>
+    <NoSsr>
       <Head>
         <title>{title}</title>
       </Head>
@@ -51,14 +51,14 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
             <Grid item marginTop={9}>
               <ButtonBack />
             </Grid>
-            <Grid item flex={1} sx={{marginTop: 2}}>
+            <Grid item flex={1} sx={{ marginTop: 2 }}>
               <Admin />
               {children}
             </Grid>
           </Grid>
         </Main>
       </Box>
-    </div>
+    </NoSsr>
   )
 }
 

@@ -1,6 +1,6 @@
 import ReplayIcon from "@mui/icons-material/Replay"
 import { Tooltip, IconButton } from "@mui/material"
-import { TrashIcon } from "assets/images/icons"
+import { TrashIcon } from "../../../assets/images/icons"
 
 const ButtonDelete = (props: {
   tooltipTitle: string

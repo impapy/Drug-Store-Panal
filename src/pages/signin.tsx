@@ -8,16 +8,16 @@ import { Form, Formik } from "formik"
 import { Grid, IconButton, InputAdornment, Stack, styled, Typography, useTheme } from "@mui/material"
 import { toFormikValidationSchema } from "zod-formik-adapter"
 import { useRouter } from "next/router"
-import { useLoginMutation } from "api"
+import { useLoginMutation } from "../api"
 import Snackbar from "@mui/material/Snackbar"
 import Alert from "@mui/material/Alert"
 import { z } from "zod"
 import "react-image-gallery/styles/css/image-gallery.css"
 
-import ErrorAlert from "components/UI/ErrorAlert"
-import TextInput from "components/UI/TextInput"
-import { ArrowRightIcon } from "assets/images/icons"
-import { useAuthContext } from "contexts/AuthContext"
+import ErrorAlert from "../components/UI/ErrorAlert"
+import TextInput from "../components/UI/TextInput"
+import { ArrowRightIcon } from "../assets/images/icons"
+import { useAuthContext } from "../contexts/AuthContext"
 
 const SignIn: NextPage = () => {
   return (
@@ -67,7 +67,9 @@ const SignInForm = () => {
   const { mutate, isLoading, isError, error } = useLoginMutation()
   const { login } = useAuthContext()
   const router = useRouter()
-
+  if (error || isError) {
+    console.log(error)
+  }
   return (
     <Stack
       // spacing={SPACING}

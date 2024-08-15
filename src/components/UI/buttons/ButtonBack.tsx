@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { Box, Button, ButtonBase, styled } from "@mui/material"
 
-import { ArrowBackIcon } from "assets/images/icons"
+import { ArrowBackIcon } from "../../../assets/images/icons"
 import { useRouter } from "next/router"
 
 export const WhiteButton = styled(ButtonBase)(

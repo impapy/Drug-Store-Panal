@@ -2,7 +2,7 @@ import React from "react"
 import LoadingButton from "@mui/lab/LoadingButton"
 import { Logout } from "@mui/icons-material"
 import { Avatar, IconButton, Stack, Tooltip, Typography } from "@mui/material"
-import { useAuthContext } from "contexts/AuthContext"
+import { useAuthContext } from "../../contexts/AuthContext"
 
 const Admin = () => {
   const {

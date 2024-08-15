@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer"
 import TableRow from "@mui/material/TableRow"
 import { path } from "ramda"
 import { Checkbox, TableHead, Typography } from "@mui/material"
-import Link from "components/Link"
+import Link from "../Link"
 
 export type ColumnPayloadValue = Record<string, string> | string | number | boolean | React.FC
 export interface Column {

@@ -5,10 +5,9 @@ import { useField } from "formik"
 import { ButtonBase, CircularProgress, Stack, styled, Theme, Typography } from "@mui/material"
 import { css } from "@emotion/react"
 import axios from "axios"
-import { readPsd } from "ag-psd"
 
-import { centerAll } from "styles/shared"
-import { PlusCircleIcon } from "assets/images/icons"
+import { centerAll } from "../styles/shared"
+import { PlusCircleIcon } from "../assets/images/icons"
 
 interface Props {
   label?: string
@@ -51,19 +50,11 @@ const ImageUpload: React.FC<Omit<Props, "onFileChange">> = ({ name, label, getIm
   }
 
   useEffect(() => {
-    if (!field.value || !isPSD(field.value)) return
+    if (!field.value) return
     ;(async () => {
       const { data } = await axios.get(field.value, {
         responseType: "arraybuffer",
       })
-
-      const psd = readPsd(data)
-
-
-      psd.canvas!.style.width = `${ref?.current?.clientWidth}px`
-      psd.canvas!.style.height = `${ref?.current?.clientHeight}px`
-
-      ref.current?.appendChild(psd.canvas!)
     })()
   }, [field.value])
 
@@ -104,7 +95,7 @@ const ImageUpload: React.FC<Omit<Props, "onFileChange">> = ({ name, label, getIm
             </Stack>
             {/* @ts-ignore: Unreachable code error */}
             <StyledImageContainer ref={ref}>
-              {!isPSD(field.value) && field.value && (
+              { field.value && (
                 <Image
                   src={field.value}
                   alt={label}
@@ -122,7 +113,7 @@ const ImageUpload: React.FC<Omit<Props, "onFileChange">> = ({ name, label, getIm
 
       <input
         type="file"
-        accept="image/png, image/jpeg, image/psd"
+        accept="image/png, image/jpeg"
         style={{ display: "none" }}
         ref={fileRef}
         onChange={handleChange}
@@ -154,9 +145,6 @@ export const StyledImageContainer = styled("div")(
 `,
 )
 
-const isPSD = (url: string) => {
-  return url?.endsWith(".vnd.adobe.photoshop") || url?.endsWith(".psd")
-}
 
 const shimmer =
   "data:image/svg+xml;base64,Cjxzdmcgd2lkdGg9IjcwMCIgaGVpZ2h0PSI0NzUiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciPgogICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjMzMzIiBvZmZzZXQ9IjIwJSIgLz4KICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iIzIyMiIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiMzMzMiIG9mZnNldD0iNzAlIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjcwMCIgaGVpZ2h0PSI0NzUiIGZpbGw9IiMzMzMiIC8+CiAgPHJlY3QgaWQ9InIiIHdpZHRoPSI3MDAiIGhlaWdodD0iNDc1IiBmaWxsPSJ1cmwoI2cpIiAvPgogIDxhbmltYXRlIHhsaW5rOmhyZWY9IiNyIiBhdHRyaWJ1dGVOYW1lPSJ4IiBmcm9tPSItNzAwIiB0bz0iNzAwIiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgIC8+Cjwvc3ZnPg=="

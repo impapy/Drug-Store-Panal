@@ -1,13 +1,11 @@
-query me {
-  me {
+query Viewer {
+  viewer: me {
     ... on Admin {
       _id
       email
       name
       userType
       image
-      createdAt
-      modifiedAt
     }
     ... on User {
       _id
@@ -15,8 +13,6 @@ query me {
       name
       userType
       image
-      createdAt
-      modifiedAt
     }
   }
 }

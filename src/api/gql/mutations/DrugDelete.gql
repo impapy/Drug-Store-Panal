@@ -1,0 +1,3 @@
+mutation DrugDelete($drugId: ObjectId!) {
+  drugDelete(drugId: $drugId)
+}
